@@ -5,58 +5,68 @@
     <div class="elementos">
             <div class="ele1"><h1>Consultas médicas gerais</h1>
             <p>prevenção, diagnóstico e acompanhamento de doenças comuns.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Pediatria</h1>
-            <p>cuidados de saúde para crianças e adolescentes.</p>
+              <p>cuidados de saúde para crianças e adolescentes.</p>
+              <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Geriatria</h1>
             <p>acompanhamento da saúde do idoso.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Clínica de prevenção</h1>
             <p>check-ups, exames de rotina e vacinação.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Dermatologia básica</h1>
             <p>avaliação de pele, unhas e cabelo.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Acompanhamento de doenças crônicas</h1>
             <p>hipertensão, diabetes, colesterol alto.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Atendimento de urgência leve </h1>
             <p> pequenos cortes, febres, infecções leves.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Exames laboratoriais e de imagem</h1>
             <p>coleta de sangue, raio-X, ultrassom básico.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Nutrição e orientação alimentar</h1>
             <p>aconselhamento para uma alimentação saudável.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Saúde mental</h1>
             <p>encaminhamento ou atendimento básico psicológico.</p>
+            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
         
            
        
-    </div>
+          </div>
     
 </section>
 </template>
@@ -92,7 +102,7 @@ export default{
   box-shadow: 10 10px 15px rgba(13, 59, 102, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeInUp 0.5s ease forwards;
-  height: 300px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -157,4 +167,17 @@ export default{
   
  
 }
+.ele1 img {
+  max-width: 100%;
+  max-height: 200px; /* controla a altura pra não estourar */
+  object-fit: cover; /* mantém a proporção */
+  margin: 0 auto; /* centraliza horizontalmente */
+  display: block;   /* garante que o margin funcione */
+  position: absolute;
+  bottom: 10px; /* distância do fundo do cartão */
+ left: 6%;
+ border-radius: 20px;
+  transform: translateY(-50%);
+}
+
 </style>
