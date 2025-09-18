@@ -5,61 +5,61 @@
     <div class="elementos">
             <div class="ele1"><h1>Consultas médicas gerais</h1>
             <p>prevenção, diagnóstico e acompanhamento de doenças comuns.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"><img  src="/src/assets/img/consulta.geral1.jpg" alt=""></div> 
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Pediatria</h1>
               <p>cuidados de saúde para crianças e adolescentes.</p>
-              <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+             <div class="imagens"> <img src="/src/assets/img/consulta de pediatria.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Geriatria</h1>
             <p>acompanhamento da saúde do idoso.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"> <img src="/src/assets/img/consulta.Geriatria1.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Clínica de prevenção</h1>
             <p>check-ups, exames de rotina e vacinação.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+          <div class="imagens">  <img src="/src/assets/img/consulta.preveçao.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Dermatologia básica</h1>
             <p>avaliação de pele, unhas e cabelo.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"> <img src="/src/assets/img/dermatologia.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Acompanhamento de doenças crônicas</h1>
             <p>hipertensão, diabetes, colesterol alto.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+            <div class="imagens"><img src="/src/assets/img/Acompanhamento de doenças crônicas1.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Atendimento de urgência leve </h1>
             <p> pequenos cortes, febres, infecções leves.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"> <img src="/src/assets/img/leve.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Exames laboratoriais e de imagem</h1>
             <p>coleta de sangue, raio-X, ultrassom básico.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+            <div class="imagens"><img src="/src/assets/img/laboratorio (2).jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Nutrição e orientação alimentar</h1>
             <p>aconselhamento para uma alimentação saudável.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"> <img src="/src/assets/img/consulta.nutriçao.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
             <div class="ele1"><h1>Saúde mental</h1>
             <p>encaminhamento ou atendimento básico psicológico.</p>
-            <img src="/src/assets/img/consulta de pediatria.jpg" alt="">
+           <div class="imagens"> <img src="/src/assets/img/consulta saude mental.jpg" alt=""></div>
             <a href="#" class="marcar">Marcar Consulta</a>
             </div>
 
@@ -167,17 +167,36 @@ export default{
   
  
 }
-.ele1 img {
-  max-width: 100%;
-  max-height: 200px; /* controla a altura pra não estourar */
-  object-fit: cover; /* mantém a proporção */
-  margin: 0 auto; /* centraliza horizontalmente */
-  display: block;   /* garante que o margin funcione */
-  position: absolute;
-  bottom: 10px; /* distância do fundo do cartão */
- left: 6%;
- border-radius: 20px;
-  transform: translateY(-50%);
+
+#title{
+  font-family: "Poppins", sans-serif;
+  font-size: 0px;
+  color: #1c4272;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  -webkit-text-stroke: 1px white;
+  margin-bottom: 20px;
+  position: relative;
 }
 
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 4px;
+  background: #0D3B66;
+  animation: underline 2s ease forwards 2s;
+}
+img{
+  border-radius: 20px;
+  object-fit: cover;
+  
+  
+}
+.imagens{
+  position: absolute;
+  margin-top: 25vh;
+}
 </style>

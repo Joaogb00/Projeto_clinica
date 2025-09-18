@@ -63,7 +63,7 @@ export default {
 .titulo {
   font-family: "Poppins", sans-serif;
   font-size: 80px;
-  color: #E3F2FD;
+  color: #1c4272;
   opacity: 0;
   animation: fadeIn 2s ease forwards;
   -webkit-text-stroke: 1px white;
@@ -84,12 +84,13 @@ export default {
 
 .txt1 {
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  color: #E3F2FD;
+  font-size: 25px;
+  color: #0D3B66;
   opacity: 0;
   animation: fadeIn 2s ease forwards;
   -webkit-text-stroke: 0.5px white;
   margin-top: 10px;
+  font-weight: bolder;
 }
 
 @keyframes fadeIn {
@@ -119,7 +120,7 @@ export default {
 .menu {
   position: fixed;
   top: 0;
-  left: -250px; /* escondido */
+  left: -300px; /* escondido */
   width: 250px;
   height: 100%;
   background: #0D3B66;
@@ -161,4 +162,5 @@ export default {
 .menu ul li a:hover {
   color: #A7CDEE;
 }
+
 </style>
