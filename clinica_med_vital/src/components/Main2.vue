@@ -54,7 +54,7 @@
             <div class="ele1"><h1>Nutrição e orientação alimentar</h1>
             <p>aconselhamento para uma alimentação saudável.</p>
            <div class="imagens"> <img src="/src/assets/img/consulta.nutriçao.jpg" alt=""></div>
-            <a href="#" class="marcar">Marcar Consulta</a>
+            <RouterLink to="/marcar" class="marcar">Marcar Consulta</RouterLink>
             </div>
 
             <div class="ele1"><h1>Saúde mental</h1>

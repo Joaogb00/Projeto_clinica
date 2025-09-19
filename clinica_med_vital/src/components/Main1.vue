@@ -23,15 +23,20 @@
       </ul>
     </div>
   </section>
+  <Main2/>
 </template>
 
 <script>
+import Main2 from './Main2.vue';
 export default {
   name: 'Main1',
   data() {
     return {
       menuAberto: false
     }
+  },
+  components:{
+    Main2
   },
   methods: {
     toggleMenu() {
