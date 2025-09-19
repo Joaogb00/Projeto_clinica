@@ -60,7 +60,7 @@
             <div class="ele1"><h1>Saúde mental</h1>
             <p>encaminhamento ou atendimento básico psicológico.</p>
            <div class="imagens"> <img src="/src/assets/img/consulta saude mental.jpg" alt=""></div>
-            <a href="#" class="marcar">Marcar Consulta</a>
+            <RouterLink to="/footer" class="marcar">Marcar</RouterLink>
             </div>
 
         
@@ -142,7 +142,7 @@ export default{
   width: 120px;
   transition: 0.5s;
   position: absolute;
-  bottom: 20px; /* distância do fundo do cartão */
+  bottom: 10px; /* distância do fundo do cartão */
   left: 40%;
   transform: translateY(-50%);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.178);
@@ -192,7 +192,9 @@ export default{
 img{
   border-radius: 20px;
   object-fit: cover;
-  
+  height: 200px;
+  width: 250px;
+  margin-top: 40px;
   
 }
 .imagens{
