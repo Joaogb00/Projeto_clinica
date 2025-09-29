@@ -21,7 +21,8 @@
 
       <label for="data">Data:</label>
       <input type="date" id="data" />
-
+    
+      <input type="time">
       <button type="submit">Confirmar</button>
     </form>
   </section>
@@ -65,6 +66,7 @@ export default {
   font-weight: bold;
   cursor: pointer;
   border: none;
+  transition: .5s;
 }
 .marcar-consulta button:hover {
   background: #0D3B66;

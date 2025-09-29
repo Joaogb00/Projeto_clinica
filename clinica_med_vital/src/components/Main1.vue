@@ -5,6 +5,7 @@
       <div class="txt">
         <p class="txt1">Bem-estar começa aqui.</p>
         <p class="txt1">Seu corpo merece o melhor cuidado.</p>
+        <RouterLink class="agendamento" to="/agendamento">Agende sua consulta</RouterLink>
       </div>
     </div>
 
@@ -181,6 +182,40 @@ html {
 #icone:hover{
  
   color:  #A7CDEE;
+}
+.agendamento {
+  text-decoration: none;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  color: #0D3B66;
+  font-size: 15px;
+  text-align: center;
+  width: 200px;
+  transition: 0.5s;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.178);
+  position: relative;
+  top: 80px;
+ 
+  animation: fadeIn 2s ease forwards;
+  
+  
+}
+.agendamento:hover {
+  background-color: #0D3B66;
+  color: white;
+  
+  animation: fadeIn 2s ease forwards;
+  
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes underline {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 </style>
