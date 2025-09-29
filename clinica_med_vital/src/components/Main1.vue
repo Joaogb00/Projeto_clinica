@@ -1,5 +1,5 @@
 <template>
-  <section class="secao_inicial">
+  <section class="secao_inicial" id="inicio">
     <div class="conteudo">
       <h1 class="titulo">Med Vital</h1>
       <div class="txt">
@@ -15,19 +15,23 @@
     <div class="menu" :class="{ aberto: menuAberto }">
       <i class="bi bi-x close" @click="toggleMenu"></i>
       <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Equipe</a></li>
-        <li><a href="#">Agendamento</a></li>
-        <li><a href="#">Contato</a></li>
+        <li><a href="#inicio" @click="toggleMenu">Início</a></li>
+        <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
+        
+        <li><RouterLink to="/agendamento">Agendamento</RouterLink></li>
+        <li><a href="#contato" @click="toggleMenu">Contato</a></li>
+        <li>  <i id="icone" class="bi bi-person"></i><RouterLink to="/perfil">Minha conta</RouterLink></li>
       </ul>
     </div>
   </section>
+
+  <!-- Seções abaixo -->
   <Main2/>
 </template>
 
 <script>
 import Main2 from './Main2.vue';
+
 export default {
   name: 'Main1',
   data() {
@@ -35,7 +39,7 @@ export default {
       menuAberto: false
     }
   },
-  components:{
+  components: {
     Main2
   },
   methods: {
@@ -47,6 +51,11 @@ export default {
 </script>
 
 <style>
+html {
+  scroll-behavior: smooth; /* scroll suave */
+}
+
+/* --- SEU CSS já existente --- */
 .secao_inicial {
   background-image: url(../assets/img/inicio2.jpg);
   background-repeat: no-repeat;
@@ -57,9 +66,8 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.425);
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.34);
 }
-
 .conteudo {
   text-align: center;
   margin-bottom: 200px;
@@ -110,7 +118,7 @@ export default {
 
 #icon {
   font-size: 40px;
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 30px;
   cursor: pointer;
@@ -166,6 +174,13 @@ export default {
 
 .menu ul li a:hover {
   color: #A7CDEE;
+}
+#icone{
+  color: white;
+}
+#icone:hover{
+ 
+  color:  #A7CDEE;
 }
 
 </style>

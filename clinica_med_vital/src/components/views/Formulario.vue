@@ -1,42 +1,43 @@
 <template>
   <section class="secao-cadastro">
-    <form class="form-cadastro">
+    <form class="form-cadastro" @submit.prevent="validarFormulario">
       <div class="row1">
         <div class="box-form">
           <label for="">Nome:</label>
-          <input class="inputs" type="text" required placeholder="Digite seu nome">
+          <input v-model="form.nome" class="inputs" type="text" placeholder="Digite seu nome"  name="nome"input>
         </div>
         <div class="box-form">
           <label for="">Sobrenome:</label>
-          <input class="inputs" type="text" required placeholder="Digite seu sobrenome">
+          <input v-model="form.sobrenome" class="inputs" type="text" placeholder="Digite seu sobrenome" name="sobrenome"/>
         </div>
         <div class="box-form">
           <label for="">Telefone:</label>
-          <input class="inputs" type="number" required placeholder="(00) 00000-0000">
+          <input v-model="form.telefone" class="inputs" type="text" placeholder="(00) 00000-0000" @input="mascararTelefone" maxlength="15" name="telefone" />
         </div>
         <div class="box-form">
           <label for="">CPF:</label>
-          <input class="inputs" type="number" required placeholder="000.000.000-00">
+          <input v-model="form.cpf" class="inputs" type="text" placeholder="000-000-000.00" @input="mascararCPF" maxlength="14" name="cpf"/>
         </div>
         <div class="box-form">
           <label for="">CEP:</label>
-          <input class="inputs" type="number" required placeholder="00000-000">
+          <input v-model="form.cep" class="inputs" type="text" placeholder="00000-000" @input="mascararCEP" maxlength="9" name="cep"/>
         </div>
         <div class="box-form">
           <label for="">Data de nascimento:</label>
-          <input class="inputs" type="date" required>
+          <input v-model="form.nascimento" class="inputs" type="date" name="nascimento"/>
+  
         </div>
         <div class="box-form">
           <label for="">Segundo contato:</label>
-          <input class="inputs" type="number" required placeholder="(00) 0000-0000">
+          <input v-model="form.segundoContato" class="inputs" type="text" placeholder="(00) 0000-0000" @input="mascararTelefone2" maxlength="14" name="segundoContato" />
         </div>
         <div class="box-form">
           <label for="">Email:</label>
-          <input class="inputs" type="email" required placeholder="joaodasilva@gmail.com">
+          <input v-model="form.email" class="inputs" type="email" placeholder="joaodasilva@gmail.com" name="email" />
         </div>
         <div class="box-form">
           <label for="">Senha:</label>
-          <input class="inputs" type="password" required placeholder="Digite sua senha">
+          <input v-model="form.senha" class="inputs" type="password" placeholder="Digite sua senha" name="senha"/>
         </div>
       </div>
 
@@ -44,13 +45,90 @@
         <button class="btn-submit" type="submit">Cadastrar</button>
       </div>
     </form>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" v-show="mostrarModal">
+      <div class="modal-content">
+        <h2>Atenção!</h2>
+        <p>Por favor, preencha todos os campos do formulário.</p>
+        <button class="close" @click="fecharModal">Fechar</button>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Cadastro'
-}
+  name: "Cadastro",
+  data() {
+    return {
+      form: {
+        nome: "",
+        sobrenome: "",
+        telefone: "",
+        cpf: "",
+        cep: "",
+        nascimento: "",
+        segundoContato: "",
+        email: "",
+        senha: "",
+      },
+      mostrarModal: false,
+    };
+  },
+  methods: {
+    validarFormulario() {
+      const camposPreenchidos = Object.values(this.form).every(
+        (valor) => valor.trim() !== ""
+      );
+
+      if (!camposPreenchidos) {
+        this.mostrarModal = true;
+      } else {
+        this.$router.push("/main1"); // navega só se o form tiver completo
+        this.resetForm();
+      }
+    },
+    fecharModal() {
+      this.mostrarModal = false;
+    },
+    resetForm() {
+      for (let campo in this.form) {
+        this.form[campo] = "";
+      }
+    },
+    mascararCPF() {
+      let v = this.form.cpf.replace(/\D/g, "");
+      v = v.slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, "$1-$2");
+      v = v.replace(/(\d{3})(\d)/, "$1-$2");
+      v = v.replace(/(\d{3})(\d{2})$/, "$1.$2");
+      this.form.cpf = v;
+    },
+    mascararCEP() {
+      let v = this.form.cep.replace(/\D/g, "");
+      v = v.slice(0, 8);
+      v = v.replace(/(\d{5})(\d)/, "$1-$2");
+      this.form.cep = v;
+    },
+    mascararTelefone() {
+      let v = this.form.telefone.replace(/\D/g, "");
+      v = v.slice(0, 11);
+      if (v.length <= 10) {
+        v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+      } else {
+        v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+      }
+      this.form.telefone = v;
+    },
+    mascararTelefone2() {
+      let v = this.form.segundoContato.replace(/\D/g, "");
+      v = v.slice(0, 10);
+      v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+      this.form.segundoContato = v;
+    },
+  },
+};
 </script>
 
 <style>
@@ -86,7 +164,7 @@ export default {
 
 .row1 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -137,8 +215,45 @@ label {
   font-size: 1rem;
   font-weight: 600;
   transition: 0.3s;
+  text-decoration: none;
 }
 .btn-submit:hover {
   background-color: #2f6fab;
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.close {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #dc3545;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>

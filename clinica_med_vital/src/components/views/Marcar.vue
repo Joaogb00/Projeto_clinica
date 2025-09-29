@@ -1,6 +1,6 @@
 <template>
   <section class="marcar-consulta">
-    <h1>📅 Marcar Consulta</h1>
+    <h1>Marcar Consulta</h1>
     <form>
       <label for="nome">Nome:</label>
       <input type="text" id="nome" />

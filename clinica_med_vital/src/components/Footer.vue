@@ -1,5 +1,5 @@
 <template>
-<h1>deu cert</h1>
+<h1>deu certo</h1>
 </template>
 <script>
 export default{
@@ -7,4 +7,5 @@ export default{
 }
 </script>
 <style>
+
 </style>
