@@ -49,6 +49,16 @@ export default {
     toggleMenu() {
       this.menuAberto = !this.menuAberto
     }
+  },
+  mounted() {
+    const icon = document.getElementById("icon");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        icon.classList.add("scrolled");
+      } else {
+        icon.classList.remove("scrolled");
+      }
+    });
   }
 }
 </script>
@@ -139,10 +149,16 @@ html {
   cursor: pointer;
   transition: color 0.3s ease;
   z-index: 1001;
-  color: #fff;
-}
-#icon:hover {
   color: #A7CDEE;
+}
+
+#icon:hover {
+  color: #0D3B66;
+}
+
+/* classe que será aplicada ao descer a página */
+#icon.scrolled {
+  color: #0D3B66;
 }
 
 /* Menu lateral */
