@@ -19,6 +19,7 @@
         <li><a href="#inicio" @click="toggleMenu">Início</a></li>
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
         <li><RouterLink to="/agendamento" @click="toggleMenu">Agendamento</RouterLink></li>
+        <li><RouterLink to="/medicos" @click="toggleMenu">Medicos</RouterLink></li>
         <li><a href="#contato" @click="toggleMenu">Contato</a></li>
         <li>
           <i id="icone" class="bi bi-person"></i>

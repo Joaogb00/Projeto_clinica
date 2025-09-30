@@ -41,7 +41,12 @@ const routes = [
     name:'conta',
     component: Conta
   }
-  
+  ,
+  {
+    path: '/medicos',
+    name:'medicos',
+    component: () => import('../components/views/Medicos.vue') // carregamento lazy
+  }
 ]
 
 const router = createRouter({
