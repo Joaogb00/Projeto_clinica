@@ -5,6 +5,7 @@ import Formulario from '../components/views/Formulario.vue'
 import Footer from '../components/Footer.vue'
 import Perfil from '../components/Perfil.vue'
 import Marcar from '../components/views/Marcar.vue'
+import Conta from '@/components/views/Conta.vue'
 
 
 const routes = [
@@ -34,6 +35,11 @@ const routes = [
     path: '/agendamento',
     name:'agendamento',
     component: () => import('../components/views/Marcar.vue') // carregamento lazy
+  },
+  {
+    path: '/conta',
+    name:'conta',
+    component: Conta
   }
   
 ]

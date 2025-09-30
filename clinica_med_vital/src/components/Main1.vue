@@ -18,15 +18,17 @@
       <ul>
         <li><a href="#inicio" @click="toggleMenu">Início</a></li>
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
-        
-        <li><RouterLink to="/agendamento">Agendamento</RouterLink></li>
+        <li><RouterLink to="/agendamento" @click="toggleMenu">Agendamento</RouterLink></li>
         <li><a href="#contato" @click="toggleMenu">Contato</a></li>
-        <li>  <i id="icone" class="bi bi-person"></i><RouterLink to="/perfil">Minha conta</RouterLink></li>
+        <li>
+          <i id="icone" class="bi bi-person"></i>
+          <RouterLink to="/conta" @click="toggleMenu">Minha conta</RouterLink>
+        </li>
       </ul>
     </div>
   </section>
 
-  <!-- Seções abaixo -->
+  <!-- Outras seções -->
   <Main2/>
 </template>
 
@@ -53,35 +55,35 @@ export default {
 
 <style>
 html {
-  scroll-behavior: smooth; /* scroll suave */
+  scroll-behavior: smooth;
 }
 
-/* --- SEU CSS já existente --- */
+/* --- Hero section --- */
 .secao_inicial {
-  background-image: url(../assets/img/inicio2.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background: url(../assets/img/inicio2.jpg) no-repeat center center/cover;
   height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.34);
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.25);
 }
+
 .conteudo {
   text-align: center;
-  margin-bottom: 200px;
+  margin-bottom: 180px;
+  color: #fff;
+  z-index: 2;
 }
 
 .titulo {
   font-family: "Poppins", sans-serif;
-  font-size: 80px;
+  font-size: 72px;
   color: #1c4272;
   opacity: 0;
-  animation: fadeIn 2s ease forwards;
-  -webkit-text-stroke: 1px white;
-  margin-bottom: 20px;
+  animation: fadeIn 1.8s ease forwards;
+  -webkit-text-stroke: 1px #fff;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -89,7 +91,7 @@ html {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -10px;
+  bottom: -8px;
   width: 0;
   height: 4px;
   background: #0D3B66;
@@ -98,54 +100,67 @@ html {
 
 .txt1 {
   font-family: "Poppins", sans-serif;
-  font-size: 25px;
+  font-size: 22px;
   color: #0D3B66;
   opacity: 0;
   animation: fadeIn 2s ease forwards;
-  -webkit-text-stroke: 0.5px white;
-  margin-top: 10px;
-  font-weight: bolder;
+  -webkit-text-stroke: 0.5px #fff;
+  margin-top: 8px;
+  font-weight: 600;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Botão */
+.agendamento {
+  display: inline-block;
+  margin-top: 50px;
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0D3B66;
+  background: linear-gradient(135deg, #fff, #f1f1f1);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: all 0.4s ease;
+}
+.agendamento:hover {
+  background: linear-gradient(135deg, #0D3B66, #145a92);
+  color: #fff;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-@keyframes underline {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
+/* Ícone menu */
 #icon {
-  font-size: 40px;
+  font-size: 38px;
   position: fixed;
-  top: 10px;
-  left: 30px;
+  top: 20px;
+  left: 25px;
   cursor: pointer;
   transition: color 0.3s ease;
   z-index: 1001;
+  color: #fff;
 }
 #icon:hover {
-  color: white;
+  color: #A7CDEE;
 }
 
 /* Menu lateral */
 .menu {
   position: fixed;
   top: 0;
-  left: -300px; /* escondido */
+  left: -280px;
   width: 250px;
   height: 100%;
   background: #0D3B66;
   color: white;
   padding: 60px 20px;
-  transition: 0.3s;
+  transition: left 0.35s ease;
   z-index: 1000;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.3);
 }
-
 .menu.aberto {
-  left: 0; /* aparece */
+  left: 0;
 }
 
 .menu .close {
@@ -159,11 +174,14 @@ html {
 .menu ul {
   list-style: none;
   padding: 0;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .menu ul li {
-  margin: 20px 0;
+  margin: 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .menu ul li a {
@@ -172,44 +190,21 @@ html {
   font-size: 18px;
   transition: 0.3s;
 }
-
 .menu ul li a:hover {
   color: #A7CDEE;
 }
-#icone{
+
+#icone {
   color: white;
+  font-size: 20px;
 }
-#icone:hover{
- 
-  color:  #A7CDEE;
+#icone:hover {
+  color: #A7CDEE;
 }
-.agendamento {
-  text-decoration: none;
-  padding: 15px 20px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  color: #0D3B66;
-  font-size: 15px;
-  text-align: center;
-  width: 200px;
-  transition: 0.5s;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.178);
-  position: relative;
-  top: 80px;
- 
-  animation: fadeIn 2s ease forwards;
-  
-  
-}
-.agendamento:hover {
-  background-color: #0D3B66;
-  color: white;
-  
-  animation: fadeIn 2s ease forwards;
-  
-}
+
+/* Animações */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -217,5 +212,4 @@ html {
   from { width: 0; }
   to { width: 100%; }
 }
-
 </style>

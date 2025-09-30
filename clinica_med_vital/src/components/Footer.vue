@@ -12,13 +12,15 @@
         <ul>
           <li><a href="#inicio">Início</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#contato">Contato</a></li>
+          
           <li><a href="#sobre">Sobre</a></li>
         </ul>
       </nav>
 
       <!-- Redes sociais -->
       <div class="footer-social">
+        <p id="ctt">Contato:</p>
+        
         <a href="#"><i class="bi bi-facebook"></i></a>
         <a href="#"><i class="bi bi-instagram"></i></a>
         <a href="#"><i class="bi bi-whatsapp"></i></a>
@@ -89,4 +91,5 @@ export default {
     gap: 20px;
   }
 }
+
 </style>
