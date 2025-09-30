@@ -85,8 +85,21 @@ export default {
       if (!camposPreenchidos) {
         this.mostrarModal = true;
       } else {
-        this.$router.push("/main1"); // navega só se o form tiver completo
-        this.resetForm();
+        // Envia dados para o backend
+        fetch("http://localhost:3000/usuarios", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(this.form)
+        })
+        .then(res => res.json())
+        .then(resposta => {
+          console.log(resposta.mensagem);
+          this.resetForm();
+          this.$router.push("/main1"); // navega para a página principal
+        })
+        .catch(err => {
+          console.error("Erro ao cadastrar usuário:", err);
+        });
       }
     },
     fecharModal() {
