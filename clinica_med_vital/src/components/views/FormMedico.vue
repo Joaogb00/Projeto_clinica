@@ -1,6 +1,10 @@
 <template>
   <section class="secao-cadastro">
     <form class="form-cadastro" @submit.prevent="validarFormulario">
+      
+      <!-- TÍTULO CENTRAL -->
+      <h1 class="medic">Sou Médico</h1>
+
       <div class="row1">
         <div class="box-form">
           <label for="">Nome:</label>
@@ -16,11 +20,15 @@
         </div>
         <div class="box-form">
           <label for="">CPF:</label>
-          <input v-model="form.cpf" class="inputs" type="text" placeholder="000-000-000.00" @input="mascararCPF" maxlength="14" name="cpf"/>
+          <input v-model="form.cpf" class="inputs" type="text" placeholder="000.000.000-00" @input="mascararCPF" maxlength="14" name="cpf"/>
         </div>
         <div class="box-form">
           <label for="">CEP:</label>
           <input v-model="form.cep" class="inputs" type="text" placeholder="00000-000" @input="mascararCEP" maxlength="9" name="cep"/>
+        </div>
+        <div class="box-form">
+          <label for="">CRM:</label>
+          <input v-model="form.crm" class="inputs" type="text" placeholder="123456" name="crm"/>
         </div>
         <div class="box-form">
           <label for="">Data de nascimento:</label>
@@ -42,7 +50,7 @@
 
       <div style="grid-column: span 3; text-align: center; margin-top: 20px;" class="conteiner-submit">
         <button class="btn-submit" type="submit">Cadastrar</button>
-        <RouterLink to="/FormMedico" class="btn-submit">Sou Medico</RouterLink>
+        <RouterLink to="/" class="btn-submit">Sou Paciente</RouterLink>
       </div>
     </form>
 
@@ -59,7 +67,7 @@
 
 <script>
 export default {
-  name: "Cadastro",
+  name: "CadastroMedico",
   data() {
     return {
       form: {
@@ -68,6 +76,7 @@ export default {
         telefone: "",
         cpf: "",
         cep: "",
+        crm: "",
         nascimento: "",
         segundoContato: "",
         email: "",
@@ -85,20 +94,26 @@ export default {
       if (!camposPreenchidos) {
         this.mostrarModal = true;
       } else {
-        // Envia dados para o backend
-        fetch("http://localhost:3000/usuarios", {
+        // Limpar máscaras antes de enviar
+        const payload = { ...this.form };
+        payload.cpf = payload.cpf.replace(/\D/g, "");
+        payload.telefone = payload.telefone.replace(/\D/g, "");
+        payload.segundoContato = payload.segundoContato.replace(/\D/g, "");
+
+        fetch("http://localhost:3000/medicos", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(this.form)
+          body: JSON.stringify(payload)
         })
         .then(res => res.json())
         .then(resposta => {
           console.log(resposta.mensagem);
           this.resetForm();
-          this.$router.push("./main1"); // navega somente após sucesso
+          // Redireciona usando o nome da rota definido no Vue Router
+          this.$router.push({ name: "MedicoCadastrado" });
         })
         .catch(err => {
-          console.error("Erro ao cadastrar usuário:", err);
+          console.error("Erro ao cadastrar médico:", err);
         });
       }
     },
@@ -111,22 +126,19 @@ export default {
       }
     },
     mascararCPF() {
-      let v = this.form.cpf.replace(/\D/g, "");
-      v = v.slice(0, 11);
-      v = v.replace(/(\d{3})(\d)/, "$1-$2");
-      v = v.replace(/(\d{3})(\d)/, "$1-$2");
-      v = v.replace(/(\d{3})(\d{2})$/, "$1.$2");
+      let v = this.form.cpf.replace(/\D/g, "").slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d{2})$/, "$1-$2");
       this.form.cpf = v;
     },
     mascararCEP() {
-      let v = this.form.cep.replace(/\D/g, "");
-      v = v.slice(0, 8);
+      let v = this.form.cep.replace(/\D/g, "").slice(0, 8);
       v = v.replace(/(\d{5})(\d)/, "$1-$2");
       this.form.cep = v;
     },
     mascararTelefone() {
-      let v = this.form.telefone.replace(/\D/g, "");
-      v = v.slice(0, 11);
+      let v = this.form.telefone.replace(/\D/g, "").slice(0, 11);
       if (v.length <= 10) {
         v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
       } else {
@@ -135,8 +147,7 @@ export default {
       this.form.telefone = v;
     },
     mascararTelefone2() {
-      let v = this.form.segundoContato.replace(/\D/g, "");
-      v = v.slice(0, 10);
+      let v = this.form.segundoContato.replace(/\D/g, "").slice(0, 10);
       v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
       this.form.segundoContato = v;
     },
@@ -270,9 +281,38 @@ label {
   cursor: pointer;
 }
 .conteiner-submit{
-display: flex;
-flex-direction: row;
-gap: 30px;
-margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.medic {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #0D3B66;
+  margin-bottom: 30px;
+  grid-column: span 3;
+  position: relative;
+  display: block;
+}
+
+.medic::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00E5FF, #6A00FF, #FF5DA2, #00E5FF);
+  background-size: 300% 100%;
+  animation: moverLinha 3s linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes moverLinha {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 </style>

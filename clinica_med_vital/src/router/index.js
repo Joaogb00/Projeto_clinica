@@ -46,6 +46,11 @@ const routes = [
     path: '/medicos',
     name:'medicos',
     component: () => import('../components/views/Medicos.vue') // carregamento lazy
+  }, 
+  {
+    path: '/FormMedico',
+    name: 'Formedico',
+    component: () => import('../components/views/FormMedico.vue')
   }
 ]
 
