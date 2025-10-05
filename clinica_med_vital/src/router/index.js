@@ -51,6 +51,11 @@ const routes = [
     path: '/FormMedico',
     name: 'Formedico',
     component: () => import('../components/views/FormMedico.vue')
+  },
+  {
+   path: '/minhasconsultas',
+   name: 'minhasconsultas',
+  component: () => import('../components/views/MinasConsultas.vue')
   }
 ]
 
