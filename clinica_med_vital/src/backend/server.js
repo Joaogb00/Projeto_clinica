@@ -1,3 +1,4 @@
+// server.js
 // ================== IMPORTAÇÕES ================== //
 const express = require('express');
 const mongoose = require('mongoose');
@@ -5,6 +6,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 
 const app = express();
+const PORT = 3000;
 
 // ================== MIDDLEWARES ================== //
 app.use(express.json());
@@ -15,8 +17,8 @@ mongoose.connect('mongodb://localhost:27017/Clinica_med_vital', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('✅ Conectado ao MongoDB!'))
-.catch((err) => console.error('❌ Erro ao conectar ao MongoDB:', err));
+  .then(() => console.log('✅ Conectado ao MongoDB!'))
+  .catch((err) => console.error('❌ Erro ao conectar ao MongoDB:', err));
 
 // ================== SCHEMAS & MODELS ================== //
 
@@ -29,7 +31,7 @@ const usuarioSchema = new mongoose.Schema({
   cep: String,
   nascimento: String,
   segundoContato: String,
-  email: String,
+  email: { type: String, unique: true },
   senha: String
 });
 const Usuario = mongoose.model('Usuario', usuarioSchema);
@@ -47,8 +49,8 @@ const Medico = mongoose.model('Medico', medicoSchema);
 
 // Consulta
 const consultaSchema = new mongoose.Schema({
-  paciente: String, // agora como string
-  medico: String,   // agora como string
+  paciente: String,
+  medico: String,
   data: String,
   hora: String,
   descricao: String,
@@ -64,12 +66,69 @@ const servicoSchema = new mongoose.Schema({
 });
 const Servico = mongoose.model('Servico', servicoSchema);
 
+// ================== ROTAS USUÁRIOS (PACIENTES) ================== //
+
+// Cadastrar novo usuário
+app.post('/usuarios', async (req, res) => {
+  try {
+    const { nome, sobrenome, telefone, cpf, cep, nascimento, segundoContato, email, senha } = req.body;
+
+    // Validação de campos obrigatórios
+    if (!nome || !sobrenome || !telefone || !cpf || !cep || !nascimento || !segundoContato || !email || !senha) {
+      return res.status(400).json({ mensagem: 'Por favor, preencha todos os campos.' });
+    }
+
+    // Verifica se o e-mail já existe
+    const usuarioExistente = await Usuario.findOne({ email });
+    if (usuarioExistente) {
+      return res.status(400).json({ mensagem: 'E-mail já cadastrado!' });
+    }
+
+    // Criptografa a senha
+    const senhaCriptografada = await bcrypt.hash(senha, 10);
+
+    // Cria novo usuário
+    const novoUsuario = new Usuario({
+      nome,
+      sobrenome,
+      telefone,
+      cpf,
+      cep,
+      nascimento,
+      segundoContato,
+      email,
+      senha: senhaCriptografada
+    });
+
+    await novoUsuario.save();
+
+    res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
+  } catch (erro) {
+    console.error('Erro ao cadastrar usuário:', erro);
+    res.status(500).json({ mensagem: 'Erro interno no servidor', erro });
+  }
+});
+
+// Listar todos os usuários
+app.get('/usuarios', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (erro) {
+    res.status(500).json({ mensagem: 'Erro ao buscar usuários', erro });
+  }
+});
+
 // ================== ROTAS CONSULTAS ================== //
 
-// Marcar consulta via formulário
+// Marcar consulta
 app.post('/marcar-consulta', async (req, res) => {
   try {
     const { paciente, medico, data, hora, descricao } = req.body;
+
+    if (!paciente || !medico || !data || !hora || !descricao) {
+      return res.status(400).json({ mensagem: 'Todos os campos da consulta são obrigatórios.' });
+    }
 
     const novaConsulta = new Consulta({
       paciente,
@@ -109,6 +168,6 @@ app.delete('/consultas/:id', async (req, res) => {
 });
 
 // ================== START SERVER ================== //
-app.listen(3000, () => {
-  console.log('🚀 Servidor rodando na porta 3000');
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
