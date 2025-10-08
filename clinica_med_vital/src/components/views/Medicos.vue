@@ -1,5 +1,5 @@
 <template>
-    <RouterLink to="/main1" class="btn-home">
+    <RouterLink to="/cadastrado" class="btn-home">
     <i class="bi bi-house-door-fill"></i> 
   </RouterLink>
   <section class="medicos">
@@ -28,7 +28,7 @@ export default {
           foto: "https://cdn-icons-png.flaticon.com/512/3774/3774299.png",
         },
         {
-          nome: "Dra. Mariana Costa",
+          nome: "Dr. Vitor Vieira",
           especialidade: "Dermatologista, Acompanhamento de doenças crônicas e Preveção",
           foto: "https://cdn-icons-png.flaticon.com/512/2922/2922561.png",
         },

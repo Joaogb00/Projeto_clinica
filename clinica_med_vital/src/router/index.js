@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // ================== IMPORTAÇÕES ================== //
-import Formulario from '../components/views/Formulario.vue'
 import Footer from '../components/Footer.vue'
 import Perfil from '../components/Perfil.vue'
 import Marcar from '../components/views/Marcar.vue'
@@ -12,12 +11,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Formulario // página inicial
+    component: () => import('../components/Main1.vue') // ✅ Main1 é a página inicial agora
   },
   {
-    path: '/main1',
-    name: 'OutraPagina',
-    component: () => import('../components/Main1.vue') // carregamento lazy
+    path: '/formulario',
+    name: 'Formulario',
+    component: () => import('../components/views/Formulario.vue')
   },
   {
     path: '/footer',
@@ -54,13 +53,17 @@ const routes = [
     name: 'minhasconsultas',
     component: () => import('../components/views/MinasConsultas.vue')
   },
-
-  // ✅ ROTA DO DASHBOARD MÉDICO (FALTAVA ESSA)
   {
     path: '/Pag_medico/DashboardMedico',
     name: 'DashboardMedico',
     component: () => import('../components/views/Pag_medico/DashboardMedico.vue')
-  }
+  },
+  {
+  path: '/cadastrado',
+  name: 'Cadastrado',
+  component: () => import('../components/views/Pag_Cadastrado/Cadastrado.vue')
+}
+
 ]
 
 // ================== CRIAÇÃO DO ROUTER ================== //

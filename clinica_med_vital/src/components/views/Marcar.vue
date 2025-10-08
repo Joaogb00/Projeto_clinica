@@ -1,5 +1,5 @@
 <template>
-  <RouterLink to="/main1" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
+  <RouterLink to="/cadastrado" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
   <section class="marcar-consulta">
     <h1>Marcar Consulta</h1>
     <form @submit.prevent="enviarFormulario">

@@ -42,7 +42,7 @@
         <h2>Confirmação</h2>
         <p>
           Tem certeza que deseja
-          <strong v-if="acaoAtual === 'concluir'">concluir</strong>
+          <strong v-if="acaoAtual === 'concluir'">concluir</strong>   <!-- esta linha faz isso-->
           <strong v-else>desmarcar</strong>
           esta consulta?
         </p>

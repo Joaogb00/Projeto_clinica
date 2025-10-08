@@ -10,7 +10,7 @@
         </div>
         <h2>Consultas médicas gerais</h2>
         <p>Prevenção, diagnóstico e acompanhamento de doenças comuns.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -19,7 +19,7 @@
         </div>
         <h2>Pediatria</h2>
         <p>Cuidados de saúde para crianças e adolescentes.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -28,7 +28,7 @@
         </div>
         <h2>Geriatria</h2>
         <p>Acompanhamento da saúde do idoso.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -37,7 +37,7 @@
         </div>
         <h2>Clínica de prevenção</h2>
         <p>Check-ups, exames de rotina e vacinação.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -46,7 +46,7 @@
         </div>
         <h2>Dermatologia básica</h2>
         <p>Avaliação de pele, unhas e cabelo.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -55,7 +55,7 @@
         </div>
         <h2>Acompanhamento de doenças crônicas</h2>
         <p>Hipertensão, diabetes, colesterol alto.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -64,7 +64,7 @@
         </div>
         <h2>Atendimento de urgência leve</h2>
         <p>Pequenos cortes, febres, infecções leves.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -73,7 +73,7 @@
         </div>
         <h2>Exames laboratoriais e de imagem</h2>
         <p>Coleta de sangue, raio-X, ultrassom básico.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -82,7 +82,7 @@
         </div>
         <h2>Nutrição e orientação alimentar</h2>
         <p>Aconselhamento para uma alimentação saudável.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
 
       <div class="ele1">
@@ -91,7 +91,7 @@
         </div>
         <h2>Saúde mental</h2>
         <p>Encaminhamento ou atendimento básico psicológico.</p>
-        <RouterLink to="/Formulario" class="marcar">Marcar Consulta</RouterLink>
+        <RouterLink to="/agendamento" class="marcar">Marcar Consulta</RouterLink>
       </div>
     </div>
 
@@ -100,10 +100,10 @@
 </template>
 
 <script>
-import Sobre from './Sobre.vue';
+
 
 export default {
-  name: 'Main2',
+  name: 'Main2Cadastrado',
   data() {
     return {
       mostrarTopo: false
@@ -124,7 +124,7 @@ export default {
     }
   },
   components:{
-    Sobre
+   
   }
 }
 </script>

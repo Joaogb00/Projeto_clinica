@@ -1,4 +1,5 @@
 <template>
+  <RouterLink to="/cadastrado" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
   <section class="minha-conta">
     <div class="perfil fade-in">
       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Foto de perfil" class="foto-perfil" />
@@ -14,9 +15,7 @@
     <div class="acoes fade-in">
       <button class="btn editar" @click="editar = !editar">{{ editar ? 'Salvar' : 'Editar Dados' }}</button>
       <button class="btn logout">Sair</button>
-      <RouterLink to="/main1" class="btn-home">
-        <i class="bi bi-house-door-fill"></i> Início
-      </RouterLink>
+      
     </div>
 
     <!-- Formulário de edição -->

@@ -1,5 +1,5 @@
 <template>
-   <RouterLink to="/main1" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
+   <RouterLink to="/cadastrado" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
   <section class="minhas-consultas">
     <h1>Minhas Consultas</h1>
 

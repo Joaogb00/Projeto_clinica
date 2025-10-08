@@ -5,7 +5,7 @@
       <div class="txt">
         <p class="txt1">Bem-estar começa aqui.</p>
         <p class="txt1">Seu corpo merece o melhor cuidado.</p>
-        <RouterLink class="agendamento" to="/Formulario">Agende sua consulta</RouterLink>
+        <RouterLink class="agendamento" to="/agendamento">Agende sua consulta</RouterLink>
       </div>
     </div>
 
@@ -19,12 +19,12 @@
         <li><a href="#inicio" @click="toggleMenu">Início</a></li>
         <li><a href="#sobre" @click="toggleMenu">Sobre</a></li>
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
-        
+        <li><RouterLink to="/agendamento" @click="toggleMenu">Agendar Cosulta</RouterLink></li>
         <li><RouterLink to="/medicos" @click="toggleMenu">Medicos</RouterLink></li>
-       
+        <li><RouterLink to="/minhasconsultas" @click="toggleMenu">Minhas Consultas</RouterLink></li>
         <li>
           <i id="icone" class="bi bi-person"></i>
-          <RouterLink to="/formulario" @click="toggleMenu">Cadastre-se</RouterLink>
+          <RouterLink to="/conta" @click="toggleMenu">Minha conta</RouterLink>
         </li>
       </ul>
     </div>
@@ -35,17 +35,17 @@
 </template>
 
 <script>
-import Main2 from './Main2.vue';
+
 
 export default {
-  name: 'Main1',
+  name: 'Main1Cadastrado',
   data() {
     return {
       menuAberto: false
     }
   },
   components: {
-    Main2
+    
   },
   methods: {
     toggleMenu() {
@@ -72,7 +72,7 @@ html {
 
 /* --- Hero section --- */
 .secao_inicial {
-  background: url(../assets/img/inicio2.jpg) no-repeat center center/cover;
+  background: url(@/assets/img/inicio2.jpg) no-repeat center center/cover;
   height: 100vh; 
   display: flex;
   justify-content: center;

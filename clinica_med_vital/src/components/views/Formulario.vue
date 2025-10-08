@@ -1,15 +1,17 @@
 <template>
+  <RouterLink to="/" class="btn-home"> <i class="bi bi-house-door-fill"></i> </RouterLink>
   <section class="secao-cadastro">
     <form class="form-cadastro" @submit.prevent="validarFormulario">
       <div class="row1">
+        
         <div class="box-form">
           <label>Nome:</label>
-          <input v-model="form.nome" class="inputs" type="text" placeholder="Digite seu nome" />
+          <input v-model="form.nome" class="inputs" type="text" placeholder="Digite seu nome" name="nome" />
         </div>
 
         <div class="box-form">
           <label>Sobrenome:</label>
-          <input v-model="form.sobrenome" class="inputs" type="text" placeholder="Digite seu sobrenome" />
+          <input v-model="form.sobrenome" class="inputs" type="text" placeholder="Digite seu sobrenome"  name="sobrenome"/>
         </div>
 
         <div class="box-form">
@@ -93,6 +95,9 @@ export default {
         return;
       }
 
+      // SALVA NO LOCALSTORAGE
+      localStorage.setItem('usuario', JSON.stringify(this.form));
+
       // faz POST para backend
       fetch("http://localhost:3000/usuarios", {
         method: "POST",
@@ -109,7 +114,8 @@ export default {
         .then(resposta => {
           console.log(resposta.mensagem);
           this.resetForm();
-          this.$router.push("/main1");
+          this.$router.push("/cadastrado");
+
         })
         .catch(err => {
           console.error("Erro ao cadastrar usuário:", err);
@@ -124,21 +130,21 @@ export default {
     },
 
     // Máscaras
-   mascararCPF() {
-  let v = this.form.cpf.replace(/\D/g, ""); // remove tudo que não é número
-  if (v.length > 11) v = v.slice(0, 11); // limita a 11 números
+    mascararCPF() {
+      let v = this.form.cpf.replace(/\D/g, ""); // remove tudo que não é número
+      if (v.length > 11) v = v.slice(0, 11); // limita a 11 números
 
-  // aplica a máscara progressivamente
-  if (v.length > 9) {
-    v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
-  } else if (v.length > 6) {
-    v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
-  } else if (v.length > 3) {
-    v = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
-  }
+      // aplica a máscara progressivamente
+      if (v.length > 9) {
+        v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+      } else if (v.length > 6) {
+        v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1.$2.$3");
+      } else if (v.length > 3) {
+        v = v.replace(/(\d{3})(\d{0,3})/, "$1.$2");
+      }
 
-  this.form.cpf = v;
-},
+      this.form.cpf = v;
+    },
     mascararCEP() {
       let v = this.form.cep.replace(/\D/g, "").slice(0, 8);
       v = v.replace(/(\d{5})(\d)/, "$1-$2");
