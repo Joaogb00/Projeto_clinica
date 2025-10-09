@@ -1,5 +1,8 @@
 <template>
-   <RouterLink to="/Formulario" class="btn-home"> <i class="bi bi-box-arrow-left"></i> </RouterLink>
+  <RouterLink to="/Formulario" class="btn-home">
+    <i class="bi bi-box-arrow-left"></i>
+  </RouterLink>
+
   <section class="secao-cadastro">
     <h1 class="medic">Dashboard Médico</h1>
 
@@ -19,8 +22,14 @@
           <p><strong>Data:</strong> {{ consulta.data }}</p>
           <p><strong>Hora:</strong> {{ consulta.hora }}</p>
           <p><strong>Descrição:</strong> {{ consulta.descricao }}</p>
-          <p><strong>Status:</strong> 
-            <span :class="{'status-agendada': consulta.status === 'Agendada', 'status-concluida': consulta.status === 'Concluída'}">
+          <p>
+            <strong>Status:</strong>
+            <span
+              :class="{
+                'status-agendada': consulta.status === 'Agendada',
+                'status-concluida': consulta.status === 'Concluída'
+              }"
+            >
               {{ consulta.status }}
             </span>
           </p>
@@ -38,12 +47,12 @@
     </div>
 
     <!-- Modal de confirmação -->
-    <div v-if="modalVisivel" class="modal-overlay">
+    <div v-if="modalVisivel" class="modal-overlay" @click.self="fecharModal">
       <div class="modal">
         <h2>Confirmação</h2>
         <p>
           Tem certeza que deseja
-          <strong v-if="acaoAtual === 'concluir'">concluir</strong>   <!-- esta linha faz isso-->
+          <strong v-if="acaoAtual === 'concluir'">concluir</strong>
           <strong v-else>desmarcar</strong>
           esta consulta?
         </p>
@@ -70,7 +79,7 @@ export default {
   },
   created() {
     if (localStorage.getItem("medicoLogado") !== "true") {
-      this.$router.push({ name: "FormMedico" }); // redireciona pro login se não estiver logado
+      this.$router.push({ name: "FormMedico" });
     } else {
       this.carregarConsultas();
     }
@@ -100,7 +109,7 @@ export default {
     async confirmarAcao() {
       try {
         if (this.acaoAtual === "concluir") {
-          await axios.delete(`http://localhost:3000/consultas/${this.idSelecionado}`, {
+          await axios.patch(`http://localhost:3000/consultas/${this.idSelecionado}`, {
             status: "Concluída"
           });
         } else if (this.acaoAtual === "desmarcar") {
@@ -117,9 +126,7 @@ export default {
 </script>
 
 <style scoped>
-/* ====== CONTAINER PRINCIPAL ====== */
 .secao-cadastro {
-  background: linear-gradient(135deg, #e3f2fd, #f1f8e9);
   min-height: 100vh;
   padding: 40px;
   display: flex;
@@ -142,7 +149,6 @@ export default {
   margin-top: 50px;
 }
 
-/* ====== CONSULTAS ====== */
 .consultas-container {
   display: flex;
   flex-direction: column;
@@ -210,7 +216,6 @@ export default {
   background-color: #c82333;
 }
 
-/* ====== MODAL ====== */
 .modal-overlay {
   position: fixed;
   top: 0;

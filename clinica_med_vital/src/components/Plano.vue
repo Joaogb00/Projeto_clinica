@@ -230,6 +230,8 @@ export default {
 .opcoes-pagamento {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
   margin: 20px 0;
   color: #334155;
 }

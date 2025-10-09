@@ -50,7 +50,7 @@ export default {
 <style>
 /* Reaproveitando CSS do FormMedico */
 .secao-cadastro {
-  background: #e3f2fd;
+  
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -59,7 +59,7 @@ export default {
 }
 
 .form-cadastro {
-  background: rgba(255,255,255,0.9);
+  
   padding: 30px;
   border-radius: 15px;
   width: 90%;
