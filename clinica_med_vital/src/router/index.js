@@ -62,6 +62,22 @@ const routes = [
   path: '/cadastrado',
   name: 'Cadastrado',
   component: () => import('../components/views/Pag_Cadastrado/Cadastrado.vue')
+},
+{
+  path: '/medcad',
+  name: 'medcad',
+  component: () => import('../components/views/Pag_Cadastrado/MedicosCad.vue')
+}
+,
+{
+  path: '/plano',
+  name: 'plano',
+  component: () => import('@/components/Plano.vue')
+},
+{
+  path: '/planocad',
+  name: 'planocad',
+  component: () => import('@/components/views/PlanoCad.vue')
 }
 
 ]

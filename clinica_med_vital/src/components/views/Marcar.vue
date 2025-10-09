@@ -15,7 +15,7 @@
         <option value="Dr João Gabriel">Dr João Gabriel</option>
         <option value="Dr Miguel Augusto">Dr Miguel Augusto</option>
         <option value="Dr Pietro">Dr Pietro</option>
-        <option value="Dra Lorena Garcia">Dra Lorena Garcia</option>
+        <option value="Dr Vitor Vieira">Dr Vitor Vieira</option>
       </select>
 
       <!-- Data -->

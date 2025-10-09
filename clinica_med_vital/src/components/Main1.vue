@@ -20,6 +20,7 @@
         <li><a href="#sobre" @click="toggleMenu">Sobre</a></li>
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
         
+        <li><RouterLink to="/plano" @click="toggleMenu">Plano Clinico</RouterLink></li>
         <li><RouterLink to="/medicos" @click="toggleMenu">Medicos</RouterLink></li>
        
         <li>

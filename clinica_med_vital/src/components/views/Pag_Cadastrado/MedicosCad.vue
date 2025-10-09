@@ -1,5 +1,5 @@
 <template>
-    <RouterLink to="/" class="btn-home">
+    <RouterLink to="/cadastrado" class="btn-home">
     <i class="bi bi-house-door-fill"></i> 
   </RouterLink>
   <section class="medicos">
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "Medicos",
+  name: "MedicosCad",
   data() {
     return {
       medicos: [

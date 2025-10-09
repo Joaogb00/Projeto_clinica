@@ -20,7 +20,9 @@
         <li><a href="#sobre" @click="toggleMenu">Sobre</a></li>
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
         <li><RouterLink to="/agendamento" @click="toggleMenu">Agendar Cosulta</RouterLink></li>
-        <li><RouterLink to="/medicos" @click="toggleMenu">Medicos</RouterLink></li>
+        <li><RouterLink to="/planocad" @click="toggleMenu">Plano Clinico</RouterLink></li>
+        
+        <li><RouterLink to="/medcad" @click="toggleMenu">Medicos</RouterLink></li>
         <li><RouterLink to="/minhasconsultas" @click="toggleMenu">Minhas Consultas</RouterLink></li>
         <li>
           <i id="icone" class="bi bi-person"></i>

@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const QrCodePix = require('qrcode-pix').default; // ✅ Importação corrigida
 
 const app = express();
 const PORT = 3000;
@@ -21,7 +22,6 @@ mongoose.connect('mongodb://localhost:27017/Clinica_med_vital', {
   .catch((err) => console.error('❌ Erro ao conectar ao MongoDB:', err));
 
 // ================== SCHEMAS & MODELS ================== //
-
 // Usuário (paciente)
 const usuarioSchema = new mongoose.Schema({
   nome: String,
@@ -73,21 +73,17 @@ app.post('/usuarios', async (req, res) => {
   try {
     const { nome, sobrenome, telefone, cpf, cep, nascimento, segundoContato, email, senha } = req.body;
 
-    // Validação de campos obrigatórios
     if (!nome || !sobrenome || !telefone || !cpf || !cep || !nascimento || !segundoContato || !email || !senha) {
       return res.status(400).json({ mensagem: 'Por favor, preencha todos os campos.' });
     }
 
-    // Verifica se o e-mail já existe
     const usuarioExistente = await Usuario.findOne({ email });
     if (usuarioExistente) {
       return res.status(400).json({ mensagem: 'E-mail já cadastrado!' });
     }
 
-    // Criptografa a senha
     const senhaCriptografada = await bcrypt.hash(senha, 10);
 
-    // Cria novo usuário
     const novoUsuario = new Usuario({
       nome,
       sobrenome,
@@ -164,6 +160,39 @@ app.delete('/consultas/:id', async (req, res) => {
     res.json({ mensagem: 'Consulta desmarcada com sucesso!' });
   } catch (erro) {
     res.status(500).json({ mensagem: 'Erro ao desmarcar consulta', erro });
+  }
+});
+
+// ================== ROTA DE PAGAMENTO PIX ================== //
+app.post('/gerar-pix', async (req, res) => {
+  try {
+    const { plano, valor } = req.body;
+
+    if (!plano || !valor) {
+      return res.status(400).json({ mensagem: 'Plano e valor são obrigatórios.' });
+    }
+
+    // ✅ Gera o código Pix dinâmico corretamente
+    const qrCodePix = new QrCodePix({
+      version: '01',
+      key: 'seu_email@dominio.com', // 🔑 Substitua pela sua chave PIX real
+      name: 'Clínica Med Vital',
+      city: 'SAOPAULO',
+      message: plano,
+      value: Number(valor),
+    });
+
+    const payload = qrCodePix.payload();
+    const imagem = await qrCodePix.base64();
+
+    res.json({
+      mensagem: 'QR Code Pix gerado com sucesso!',
+      payload,
+      imagem
+    });
+  } catch (erro) {
+    console.error('Erro ao gerar QR Code Pix:', erro);
+    res.status(500).json({ mensagem: 'Erro ao gerar QR Code Pix', erro });
   }
 });
 

@@ -41,14 +41,14 @@ export default {
     return {
       editar: false,
       form: {
-        nome: "João",
-        sobrenome: "Gabriel",
+        nome: "User",
+        sobrenome: "Paciente",
         telefone: "(11) 99999-9999",
         segundoContato: "(11) 98888-8888",
         cpf: "123-456-789.00",
         cep: "12345-678",
         nascimento: "2005-06-02",
-        email: "joao@email.com",
+        email: "userpaciente@email.com",
       }
     };
   },
