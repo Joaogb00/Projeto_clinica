@@ -12,10 +12,10 @@
       <label>Médico:</label>
       <select v-model="form.medico" required>
         <option value="" disabled>Selecione um médico</option>
-        <option value="Dr João Gabriel">Dr João Gabriel</option>
-        <option value="Dr Miguel Augusto">Dr Miguel Augusto</option>
-        <option value="Dr Pietro">Dr Pietro</option>
-        <option value="Dr Vitor Vieira">Dr Vitor Vieira</option>
+        <option value="Dr João Gabriel">Dr João Matozinhos</option>
+        <option value="Dr Miguel Augusto">Dr Miguel Viana</option>
+        <option value="Dr Pietro">Dr Pietro Moreira</option>
+        <option value="Dr Vitor Vieira">Dr Kauã</option>
       </select>
 
       <!-- Data -->

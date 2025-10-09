@@ -1,7 +1,8 @@
 <template>
-    <RouterLink to="/cadastrado" class="btn-home">
+  <RouterLink to="/cadastrado" class="btn-home">
     <i class="bi bi-house-door-fill"></i> 
   </RouterLink>
+
   <section class="medicos">
     <h1 class="titulo fade-in">Nossos Médicos</h1>
 
@@ -17,32 +18,20 @@
 </template>
 
 <script>
+import Joao from "@/assets/img/Medicos/Joao.jpeg";
+import Kaua from "@/assets/img/Medicos/Kaua.jpeg";
+import Pietro from "@/assets/img/Medicos/Pietro.jpeg";
+import Miguel from "@/assets/img/Medicos/Miguel.jpeg";
+
 export default {
   name: "MedicosCad",
   data() {
     return {
       medicos: [
-        {
-          nome: "Dr. João Gabriel",
-          especialidade: "Cardiologista e Psicologo ",
-          foto: "https://cdn-icons-png.flaticon.com/512/3774/3774299.png",
-        },
-        {
-          nome: "Dr. Vitor Vieira",
-          especialidade: "Dermatologista, Acompanhamento de doenças crônicas e Preveção",
-          foto: "https://cdn-icons-png.flaticon.com/512/2922/2922561.png",
-        },
-        {
-          nome: "Dr. Pietro Moreira",
-          especialidade: "Ortopedista e Nutrição",
-          foto: "https://cdn-icons-png.flaticon.com/512/3774/3774253.png",
-        },
-        {
-          nome: "Dr. Miguel Augusto",
-          especialidade: "Pediatria, Geriatria, Raio-X e Ultrassom",
-
-          foto: "https://cdn-icons-png.flaticon.com/512/2922/2922510.png",
-        },
+        { nome: "Dr. João Matozinhos", especialidade: "Cardiologista e Psicólogo", foto: Joao },
+        { nome: "Dr. Kauã", especialidade: "Dermatologista e Prevenção", foto: Kaua },
+        { nome: "Dr. Pietro Moreira", especialidade: "Ortopedista e Nutrição", foto: Pietro },
+        { nome: "Dr. Miguel Viana", especialidade: "Pediatria e Ultrassom", foto: Miguel },
       ],
     };
   },
@@ -56,16 +45,19 @@ export default {
   padding: 20px;
   text-align: center;
 }
+
 .titulo {
   font-size: 2.3rem;
   color: #0D3B66;
   margin-bottom: 40px;
 }
+
 .grid-medicos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
+
 .card-medico {
   background: #fff;
   border-radius: 18px;
@@ -73,10 +65,12 @@ export default {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card-medico:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
+
 .foto-medico {
   width: 110px;
   height: 110px;
@@ -85,16 +79,19 @@ export default {
   border: 3px solid #0D3B66;
   margin-bottom: 15px;
 }
+
 .card-medico h2 {
   color: #0D3B66;
   font-size: 1.3rem;
   margin-bottom: 6px;
 }
+
 .especialidade {
   font-size: 15px;
   color: #444;
   margin-bottom: 18px;
 }
+
 .btn-marcar {
   background: #4DB6AC;
   color: #fff;
@@ -106,6 +103,7 @@ export default {
   transition: 0.3s;
   text-decoration: none;
 }
+
 .btn-marcar:hover {
   background: #37968c;
   transform: translateY(-3px);

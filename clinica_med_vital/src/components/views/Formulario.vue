@@ -5,50 +5,50 @@
       <div class="row1">
         
         <div class="box-form">
-          <label>Nome:</label>
+          <label>Nome:*</label>
           <input v-model="form.nome" class="inputs" type="text" placeholder="Digite seu nome" name="nome" />
         </div>
 
         <div class="box-form">
-          <label>Sobrenome:</label>
+          <label>Sobrenome:*</label>
           <input v-model="form.sobrenome" class="inputs" type="text" placeholder="Digite seu sobrenome"  name="sobrenome"/>
         </div>
 
         <div class="box-form">
-          <label>Telefone:</label>
+          <label>Telefone:*</label>
           <input v-model="form.telefone" class="inputs" type="text" placeholder="(00) 00000-0000" @input="mascararTelefone" maxlength="15" />
         </div>
 
         <div class="box-form">
-          <label>CPF:</label>
+          <label>CPF:*</label>
           <input v-model="form.cpf" class="inputs" type="text" placeholder="000.000.000-00" @input="mascararCPF" maxlength="14" />
         </div>
 
         <div class="box-form">
-          <label>CEP:</label>
+          <label>CEP:*</label>
           <input v-model="form.cep" class="inputs" type="text" placeholder="00000-000" @input="mascararCEP" maxlength="9" />
         </div>
 
         <div class="box-form">
-          <label>Data de nascimento:</label>
+          <label>Data de nascimento:*</label>
           <input v-model="form.nascimento" class="inputs" type="date" />
         </div>
 
         <div class="box-form">
-          <label>Segundo contato:</label>
+          <label>Segundo contato:*</label>
           <input v-model="form.segundoContato" class="inputs" type="text" placeholder="(00) 0000-0000" @input="mascararTelefone2" maxlength="14" />
         </div>
 
         <div class="box-form">
-          <label>Email:</label>
+          <label>Email:*</label>
           <input v-model="form.email" class="inputs" type="email" placeholder="joaodasilva@gmail.com" />
         </div>
 
         <div class="box-form">
-          <label>Senha:</label>
+          <label>Senha:*</label>
           <input v-model="form.senha" class="inputs" type="password" placeholder="Digite sua senha" />
         </div>
-      </div>
+      </div>  
 
       <div class="conteiner-submit">
         <button class="btn-submit" type="submit">Cadastrar</button>

@@ -1,4 +1,5 @@
 <template>
+   <RouterLink to="/Formulario" class="btn-home"> <i class="bi bi-box-arrow-left"></i> </RouterLink>
   <section class="secao-cadastro">
     <h1 class="medic">Dashboard Médico</h1>
 

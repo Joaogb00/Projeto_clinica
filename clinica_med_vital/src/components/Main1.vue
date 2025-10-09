@@ -21,7 +21,7 @@
         <li><a href="#servicos" @click="toggleMenu">Serviços</a></li>
         
         <li><RouterLink to="/plano" @click="toggleMenu">Plano Clinico</RouterLink></li>
-        <li><RouterLink to="/medicos" @click="toggleMenu">Medicos</RouterLink></li>
+        
        
         <li>
           <i id="icone" class="bi bi-person"></i>

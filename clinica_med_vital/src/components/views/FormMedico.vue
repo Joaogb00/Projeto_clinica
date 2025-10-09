@@ -17,8 +17,8 @@
 
       <div class="conteiner-submit">
         <button class="btn-submit" type="submit">Entrar</button>
+        <RouterLink to="/Formulario" class="btn-submit">Sou Paciente</RouterLink>
       </div>
-
       <p v-if="mensagem" style="color:red; text-align:center; margin-top:10px;">{{ mensagem }}</p>
     </form>
   </section>
